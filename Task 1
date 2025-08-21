@@ -1,38 +1,70 @@
-# Simple Calculator Program (Student Level)
+# Simple To-Do List Application
+# Made for Codeshaft Internship Task
 
-print("--- SIMPLE CALCULATOR ---")
+tasks = []
 
-# Taking input
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
+def show_menu():
+    print("\n--- TO-DO LIST APPLICATION ---")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Update Task")
+    print("4. Delete Task")
+    print("5. Exit")
 
-print("\nChoose Operation:")
-print("1. Addition (+)")
-print("2. Subtraction (-)")
-print("3. Multiplication (*)")
-print("4. Division (/)")
+def add_task():
+    task = input("Enter new task: ")
+    tasks.append(task)
+    print("Task added successfully!")
 
-choice = input("Enter your choice (1/2/3/4): ")
-
-# Performing calculation
-if choice == "1":
-    result = num1 + num2
-    print(f'Result: {num1} + {num2} = {result}')
-
-elif choice == "2":
-    result = num1 - num2
-    print(f'Result: {num1} - {num2} = {result}')
-
-elif choice == "3":
-    result = num1 * num2
-    print(f'Result: {num1} * {num2} = {result}')
-
-elif choice == "4":
-    if num2 != 0:
-        result = num1 / num2
-        print(f'Result: {num1} / {num2} = {result}')
+def view_tasks():
+    if not tasks:
+        print("No tasks available.")
     else:
-        print("Error! Division by zero not allowed.")
+        print("\nYour Tasks:")
+        for i, task in enumerate(tasks, 1):
+            print(f"{i}. {task}")
 
-else:
-    print("Invalid choice! Please select 1, 2, 3, or 4.")
+def update_task():
+    view_tasks()
+    if tasks:
+        try:
+            task_no = int(input("Enter task number to update: "))
+            if 1 <= task_no <= len(tasks):
+                new_task = input("Enter updated task: ")
+                tasks[task_no - 1] = new_task
+                print("Task updated successfully!")
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+def delete_task():
+    view_tasks()
+    if tasks:
+        try:
+            task_no = int(input("Enter task number to delete: "))
+            if 1 <= task_no <= len(tasks):
+                tasks.pop(task_no - 1)
+                print("Task deleted successfully!")
+            else:
+                print("Invalid task number.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+while True:
+    show_menu()
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        add_task()
+    elif choice == "2":
+        view_tasks()
+    elif choice == "3":
+        update_task()
+    elif choice == "4":
+        delete_task()
+    elif choice == "5":
+        print("Exiting To-Do List Application. Goodbye!")
+        break
+    else:
+        print("Invalid choice! Please try again.")
