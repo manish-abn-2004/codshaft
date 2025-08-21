@@ -13,15 +13,11 @@ This project can be implemented as a **Command-Line Interface (CLI)** or a **Gra
 - 📋 View all tasks in an organized manner  
 - 💾 Store tasks for future sessions (optional: using a file or database)
 
----
-
 ## 🛠️ Technologies Used
 - **Python 3.x**
 - (Optional for GUI) `tkinter` or `PyQt`
 - (Optional for data storage) JSON / SQLite
-
----
-
+- 
 ## 📂 Project Structure
 to_do_list/
 │── main.py # Entry point of the application
@@ -30,28 +26,3 @@ to_do_list/
 │── requirements.txt # Dependencies (if any)
 └── README.md # Project documentation
 
-yaml
-Copy
-Edit
-
----
-
-## ⚙️ Installation & Usage
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/your-username/to-do-list.git
-cd to-do-list
-2. Run the Application
-For Command-Line Version:
-
-bash
-Copy
-Edit
-python main.py
-For GUI Version:
-
-bash
-Copy
-Edit
-python gui.py
